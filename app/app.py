@@ -1,8 +1,13 @@
 # app/app.py
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
 app = Flask(__name__)
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify(status="ok"), 200
 
 
 @app.route("/", methods=["GET", "POST"])
