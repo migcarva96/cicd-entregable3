@@ -33,4 +33,8 @@ def test_modulo_residuo_normal():
     assert modulo(10, 3) == 1
     assert modulo(9, 3) == 0
     assert modulo(-7, 3) == 2
- 
+
+def test_modulo_divisor_cero():
+    with pytest.raises(ValueError):
+        modulo(10, 0)
+
