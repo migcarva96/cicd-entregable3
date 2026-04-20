@@ -1,4 +1,4 @@
-# app/app.py
+"""App calculator."""
 from flask import Flask, jsonify, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir, potencia, modulo
 
@@ -7,11 +7,13 @@ app = Flask(__name__)
 
 @app.route("/health", methods=["GET"])
 def health():
+    """Return health status."""
     return jsonify(status="ok"), 200
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """Render calculator and handle operations."""
     resultado = None
     if request.method == "POST":
         try:
@@ -42,4 +44,4 @@ def index():
 
 
 if __name__ == "__main__":  # pragma: no cover
-    app.run(debug=True, port=3300, host="0.0.0.0")  # Quita debug=True para producción
+    app.run(debug=True, port=3300, host="0.0.0.0")
